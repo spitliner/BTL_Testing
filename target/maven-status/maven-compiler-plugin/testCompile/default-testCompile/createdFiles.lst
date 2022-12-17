@@ -1,0 +1,5 @@
+org\tht\pages\SearchPage.class
+org\tht\Entry.class
+org\tht\TestAuxiliary.class
+org\tht\pages\SearchResult.class
+org\tht\WebDriver.class
