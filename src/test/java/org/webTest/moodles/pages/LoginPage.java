@@ -8,7 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class LoginPage extends Page {
+public class LoginPage {
+    private WebDriver driver;
     private static final String usernameInputBoxXpath = "//input[@id='username']";
     private static final String passwordInputBoxXpath = "//input[@id='password']";
     private static final String loginButtonXpath = "//button[@id='loginbtn']";
@@ -34,7 +35,7 @@ public class LoginPage extends Page {
     List<WebElement> invalidLoginWarning;
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
