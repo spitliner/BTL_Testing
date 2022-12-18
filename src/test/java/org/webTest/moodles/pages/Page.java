@@ -6,6 +6,8 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public abstract class Page {
     protected WebDriver driver;
 
@@ -14,6 +16,9 @@ public abstract class Page {
     private static final String courseXpath = "//li[@data-key='mycourse']//a";
 
     private static final String moreXpath = "//li[@data-key='morebutton']//a";
+    private static final String logInXPath = "//span[@class='login pl-2']//a";
+
+    private static final String isNotLoginXpath = "//span[@class='login pl-2']";
 
     @FindBy(xpath = homeXpath)
     @CacheLookup
@@ -27,6 +32,14 @@ public abstract class Page {
     @CacheLookup
     private WebElement courseButton;
 
+    @FindBy(xpath = logInXPath)
+    @CacheLookup
+    private WebElement logInButton;
+
+    @FindBy(xpath = isNotLoginXpath)
+    @CacheLookup
+    private List<WebElement> isNotLogin;
+
     public Page (WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
@@ -37,11 +50,18 @@ public abstract class Page {
         return new MainPage(this.driver);
     }
 
-    public void goDashBroad() {
+    public DashBroadPage goDashBroad() {
         this.dashBroadButton.click();
-
+        return new DashBroadPage(driver);
     }
 
-    //public
+    public LoginPage toLoginPage() {
+        logInButton.click();
+        return new LoginPage(this.driver);
+    }
+
+    public Boolean isLogin() {
+        return (0 != this.isNotLogin.size());
+    }
 
 }

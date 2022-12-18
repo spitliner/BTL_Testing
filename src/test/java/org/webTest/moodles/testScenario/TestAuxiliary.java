@@ -14,25 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestAuxiliary {
-    public TestAuxiliary() {
+    @BeforeSuite
+    public void prepareSuit() {
         System.setProperty("webdriver.chrome.driver", "Binary\\chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "Binary\\geckodriver.exe");
         System.setProperty("webdriver.edge.driver", "Binary\\msedgedriver.exe");
     }
 
-    @BeforeSuite
-    public void prepareSuit() {
-
-    }
-
     @BeforeTest
-    public void prepareTest(ITestContext context) {
+    public static void prepareTest(ITestContext context) {
         List<WebDriver> WebDriversList = new ArrayList<>();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
         WebDriversList.add(new FirefoxDriver(firefoxOptions));
         WebDriversList.add(new EdgeDriver());
         WebDriversList.add(new ChromeDriver());
+        for (WebDriver driver: WebDriversList) {
+            driver.manage().window().maximize();
+        }
         context.setAttribute("WebDriversList", WebDriversList);
     }
 

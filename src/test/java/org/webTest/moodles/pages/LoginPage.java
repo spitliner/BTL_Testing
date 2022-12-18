@@ -49,8 +49,6 @@ public class LoginPage extends Page {
     }
 
     public Boolean checkValidLogin() {
-        if (0 == invalidLoginWarning.size())
-            return Boolean.FALSE;
-        return Boolean.TRUE;
+        return 0 == invalidLoginWarning.size();
     }
 }

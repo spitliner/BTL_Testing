@@ -6,22 +6,9 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
-    private WebDriver driver;
-
-    private static final String logInXPath = "//a[text()='Log in']";
-
-    @FindBy(xpath = logInXPath)
-    @CacheLookup
-    private WebElement logInButton;
-
+public class MainPage extends Page{
     public MainPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(this.driver, this);
-    }
-
-    public LoginPage toLoginPage() {
-        logInButton.click();
-        return new LoginPage(this.driver);
     }
 }
