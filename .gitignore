@@ -82,3 +82,7 @@ nb-configuration.xml
 ## OS X
 ##############################
 .DS_Store
+
+# Default ignored files
+.vscode
+target/

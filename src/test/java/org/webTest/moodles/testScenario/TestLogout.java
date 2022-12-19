@@ -11,22 +11,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TestLogin {
+public class TestLogout {
     @Factory
     public Object [] runTest() {
         List<Object> testList = new ArrayList<>();
-        testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
+        testList.add(new SingleTestLogout("test1", "admin", "sandbox", Boolean.TRUE));
         return testList.toArray();
     }
 }
 
-class SingleTestLogin implements ITest {
+class SingleTestLogout implements ITest {
     private String testCaseName;
     private String username;
     private String password;
     private Boolean expectResult;
 
-    public SingleTestLogin(String testCaseName, String username, String password, Boolean expectResult) {
+    public SingleTestLogout(String testCaseName, String username, String password, Boolean expectResult) {
         this.testCaseName = testCaseName;
         this.username = username;
         this.password = password;

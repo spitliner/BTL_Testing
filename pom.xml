@@ -55,6 +55,12 @@
     <groupId>xml-apis</groupId>
     <artifactId>xml-apis</artifactId>
     <version>1.4.01</version>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.2.3</version>
     </dependency>
 
   </dependencies>
