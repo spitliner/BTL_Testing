@@ -46,15 +46,16 @@
     </dependency>
 
     <dependency>
-    <groupId>org.slf4j</groupId>
-    <artifactId>slf4j-simple</artifactId>
-    <version>2.0.6</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>2.0.6</version>
     </dependency>
 
     <dependency>
-    <groupId>xml-apis</groupId>
-    <artifactId>xml-apis</artifactId>
-    <version>1.4.01</version>
+      <groupId>xml-apis</groupId>
+      <artifactId>xml-apis</artifactId>
+      <version>2.0.2</version>
+    </dependency>
 
     <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
     <dependency>

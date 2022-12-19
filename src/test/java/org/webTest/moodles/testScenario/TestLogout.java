@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITest;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-import org.webTest.moodles.pages.LoginPage;
+import org.webTest.moodles.actions.LoginAction;
+import org.webTest.moodles.pages.Page;
 import org.webTest.moodles.pages.MainPage;
 
 import java.util.ArrayList;
@@ -38,11 +39,9 @@ class SingleTestLogout implements ITest {
         List<WebDriver> webDriverList = (List<WebDriver>) context.getAttribute("WebDriversList");
         for (WebDriver driver: webDriverList) {
             driver.get("https://sandbox.moodledemo.net/");
-            MainPage mainPage = new MainPage(driver);
-            LoginPage loginPage = mainPage.toLoginPage();
-            loginPage.login(this.username, this.password);
-            //System.out.println(this.expectResult);
-            assert(loginPage.checkValidLogin() == expectResult);
+            LoginAction loginAction = new LoginAction(driver, new MainPage(driver), this.username, this.password);
+            loginAction.run();
+            //assert(loginPage.checkValidLogin() == expectResult);
         }
     }
 

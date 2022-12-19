@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public abstract class Page {
+public class Page {
     protected WebDriver driver;
 
     private static final String homeXpath = "//li[@data-key='home']//a";
@@ -17,6 +17,8 @@ public abstract class Page {
 
     private static final String moreXpath = "//li[@data-key='morebutton']//a";
     private static final String logInXPath = "//span[@class='login pl-2']//a";
+
+    private static final String userDropDownMenuXpath = "//a[@id='user-menu-toggle']";
 
     private static final String isNotLoginXpath = "//span[@class='login pl-2']";
 
@@ -59,6 +61,8 @@ public abstract class Page {
         logInButton.click();
         return new LoginPage(this.driver);
     }
+
+
 
     public Boolean isLogin() {
         return (0 != this.isNotLogin.size());
