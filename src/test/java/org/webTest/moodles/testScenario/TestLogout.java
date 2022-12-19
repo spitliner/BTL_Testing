@@ -15,7 +15,7 @@ public class TestLogout {
     @Factory
     public Object [] runTest() {
         List<Object> testList = new ArrayList<>();
-        testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
+        testList.add(new SingleTestLogout("test1", "admin", "sandbox", Boolean.TRUE));
         return testList.toArray();
     }
 }
