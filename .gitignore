@@ -75,8 +75,9 @@ nb-configuration.xml
 ##############################
 ## Visual Studio Code
 ##############################
-.vscode/
+.vscode
 .code-workspace
+.bloop
 
 ##############################
 ## OS X
@@ -84,5 +85,4 @@ nb-configuration.xml
 .DS_Store
 
 # Default ignored files
-.vscode
 target/
