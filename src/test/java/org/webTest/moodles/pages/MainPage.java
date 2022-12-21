@@ -11,4 +11,9 @@ public class MainPage extends Page{
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
+
+    @Override
+    public MainPage currentPage() {
+        return this;
+    }
 }

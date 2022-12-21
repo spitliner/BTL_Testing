@@ -6,6 +6,7 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.lang.model.type.NullType;
 import java.util.List;
 
 public class Page {
@@ -22,6 +23,8 @@ public class Page {
 
     private static final String isNotLoginXpath = "//span[@class='login pl-2']";
 
+    private static final String logOutButtonXpath = "//div[@id='usermenu-carousel']//a[contains(.,'Log out')]";
+
     @FindBy(xpath = homeXpath)
     @CacheLookup
     private WebElement homeButton;
@@ -37,6 +40,13 @@ public class Page {
     @FindBy(xpath = logInXPath)
     @CacheLookup
     private WebElement logInButton;
+
+    @FindBy(xpath = userDropDownMenuXpath)
+    @CacheLookup
+    private WebElement userDropDownMenu;
+
+    @FindBy(xpath = logOutButtonXpath)
+    private WebElement logOutButton;
 
     @FindBy(xpath = isNotLoginXpath)
     @CacheLookup
@@ -62,10 +72,21 @@ public class Page {
         return new LoginPage(this.driver);
     }
 
-
+    public Page logOut() {
+        if (this.isLogin()) {
+            this.userDropDownMenu.click();
+            this.logOutButton.click();
+            return new MainPage(this.driver);
+        }
+        return this.currentPage();
+    }
 
     public Boolean isLogin() {
         return (0 != this.isNotLogin.size());
+    }
+
+    public Page currentPage() {
+        return this;
     }
 
 }

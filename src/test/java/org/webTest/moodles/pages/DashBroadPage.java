@@ -8,4 +8,9 @@ public class DashBroadPage extends Page{
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
+
+    @Override
+    public DashBroadPage currentPage() {
+        return this;
+    }
 }
