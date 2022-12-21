@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestAuxiliary implements ITest {
-    private String testCaseName = "";
+    protected String testCaseName = "";
     @BeforeSuite
     public void prepareSuit() {
         System.setProperty("webdriver.chrome.driver", "Binary\\chromedriver.exe");

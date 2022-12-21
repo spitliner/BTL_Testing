@@ -22,7 +22,6 @@ public class TestLogin {
 }
 
 class SingleTestLogin extends TestAuxiliary {
-    private String testCaseName;
     private String username;
     private String password;
     private Boolean expectResult;
