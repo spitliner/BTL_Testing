@@ -5,13 +5,15 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.ITest;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestAuxiliary {
+public class TestAuxiliary implements ITest {
+    private String testCaseName = "";
     @BeforeSuite
     public void prepareSuit() {
         System.setProperty("webdriver.chrome.driver", "Binary\\chromedriver.exe");
@@ -34,10 +36,15 @@ public class TestAuxiliary {
     }
 
     @AfterMethod
-    public void clearTest(ITestContext context) {
+    public static void clearTest(ITestContext context) {
         List<WebDriver> WebDriversList = (List<WebDriver>) context.getAttribute("WebDriversList");
         for (WebDriver driver:WebDriversList) {
             driver.quit();
         }
+    }
+
+    @Override
+    public String getTestName() {
+        return this.testCaseName;
     }
 }

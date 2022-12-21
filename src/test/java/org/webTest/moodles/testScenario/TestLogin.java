@@ -21,7 +21,7 @@ public class TestLogin {
     }
 }
 
-class SingleTestLogin implements ITest {
+class SingleTestLogin extends TestAuxiliary {
     private String testCaseName;
     private String username;
     private String password;
@@ -45,10 +45,5 @@ class SingleTestLogin implements ITest {
             //System.out.println(this.expectResult);
             assert(loginPage.checkValidLogin() == expectResult);
         }
-    }
-
-    @Override
-    public String getTestName() {
-        return this.testCaseName;
     }
 }
