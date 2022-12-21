@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import javax.lang.model.type.NullType;
 import java.util.List;
@@ -60,6 +61,10 @@ public class Page {
     public MainPage goHomePage() {
         this.homeButton.click();
         return new MainPage(this.driver);
+    }
+
+    public Select getUserDropdownMenu(){
+        return new Select(userDropDownMenu);
     }
 
     public DashBroadPage goDashBroad() {

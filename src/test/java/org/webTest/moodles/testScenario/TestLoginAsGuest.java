@@ -24,7 +24,7 @@ public class TestLoginAsGuest {
     }
 }
 
-class SingleTestLoginAsGuest implements ITest {
+class SingleTestLoginAsGuest extends TestAuxiliary {
     private String testCaseName;
     private Boolean expectResult;
 
