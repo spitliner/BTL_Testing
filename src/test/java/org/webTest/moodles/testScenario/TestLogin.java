@@ -16,12 +16,12 @@ public class TestLogin {
     public Object [] runTest() {
         List<Object> testList = new ArrayList<>();
         testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
-        testList.add((new SingleTestLoginAsGuest("test2", Boolean.TRUE)));
+        testList.add(new SingleTestLogin("test1", "admin", "aaaa", Boolean.FALSE));
         return testList.toArray();
     }
 }
 
-class SingleTestLogin implements ITest {
+class SingleTestLogin extends TestAuxiliary {
     private String testCaseName;
     private String username;
     private String password;
@@ -46,10 +46,4 @@ class SingleTestLogin implements ITest {
             assert(loginPage.checkValidLogin() == expectResult);
         }
     }
-
-    @Override
-    public String getTestName() {
-        return this.testCaseName;
-    }
 }
-
