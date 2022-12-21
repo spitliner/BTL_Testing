@@ -21,6 +21,7 @@ public class LoginAction {
     public MainPage run() {
         LoginPage loginPage = this.currentPage.toLoginPage();
         loginPage.login(this.username, this.password);
+
         return new MainPage(this.driver);
     }
 }

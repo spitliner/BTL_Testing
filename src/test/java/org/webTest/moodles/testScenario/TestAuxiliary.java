@@ -11,6 +11,7 @@ import org.testng.annotations.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TestAuxiliary implements ITest {
     private String testCaseName = "";
@@ -31,6 +32,7 @@ public class TestAuxiliary implements ITest {
         WebDriversList.add(new ChromeDriver());
         for (WebDriver driver: WebDriversList) {
             driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         }
         context.setAttribute("WebDriversList", WebDriversList);
     }
