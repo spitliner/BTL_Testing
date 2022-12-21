@@ -39,10 +39,11 @@ public class LoginPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    public void login(String username, String password) {
+    public MainPage login(String username, String password) {
         usernameBox.sendKeys(username);
         passwordBox.sendKeys(password);
         loginButton.click();
+        return new MainPage(this.driver);
     }
 
     public void loginAsGuest() {

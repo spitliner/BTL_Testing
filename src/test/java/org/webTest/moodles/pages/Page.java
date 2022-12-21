@@ -82,7 +82,7 @@ public class Page {
     }
 
     public Boolean isLogin() {
-        return (0 != this.isNotLogin.size());
+        return (0 == this.isNotLogin.size());
     }
 
     public Page currentPage() {
