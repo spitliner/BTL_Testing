@@ -10,27 +10,26 @@ import org.webTest.moodles.pages.MainPage;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class TestLogin {
+public class TestLoginAsGuest {
     @Factory
-    public Object [] runTest() {
+    public Object[] runTest() {
         List<Object> testList = new ArrayList<>();
-        testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
-        testList.add((new SingleTestLoginAsGuest("test2", Boolean.TRUE)));
+        testList.add((new SingleTestLoginAsGuest("test1", Boolean.TRUE)));
+        testList.add((new SingleTestLogin("test2","guest","guest",Boolean.TRUE)));
+        testList.add((new SingleTestLogin("test3","","guest",Boolean.FALSE)));
+        testList.add((new SingleTestLogin("test4","guest","",Boolean.FALSE)));
+        testList.add((new SingleTestLogin("test5","sdfsdfs","guest",Boolean.FALSE)));
+        testList.add((new SingleTestLogin("test6","guest","sdfsdfs",Boolean.FALSE)));
         return testList.toArray();
     }
 }
 
-class SingleTestLogin implements ITest {
+class SingleTestLoginAsGuest implements ITest {
     private String testCaseName;
-    private String username;
-    private String password;
     private Boolean expectResult;
 
-    public SingleTestLogin(String testCaseName, String username, String password, Boolean expectResult) {
+    public SingleTestLoginAsGuest(String testCaseName, Boolean expectResult) {
         this.testCaseName = testCaseName;
-        this.username = username;
-        this.password = password;
         this.expectResult = expectResult;
     }
 
@@ -41,7 +40,7 @@ class SingleTestLogin implements ITest {
             driver.get("https://sandbox.moodledemo.net/");
             MainPage mainPage = new MainPage(driver);
             LoginPage loginPage = mainPage.toLoginPage();
-            loginPage.login(this.username, this.password);
+            loginPage.loginAsGuest();
             //System.out.println(this.expectResult);
             assert(loginPage.checkValidLogin() == expectResult);
         }
@@ -52,4 +51,3 @@ class SingleTestLogin implements ITest {
         return this.testCaseName;
     }
 }
-
