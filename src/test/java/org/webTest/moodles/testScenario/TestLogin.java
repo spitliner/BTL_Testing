@@ -43,6 +43,7 @@ class SingleTestLogin extends TestAuxiliary {
             LoginPage loginPage = mainPage.toLoginPage();
             loginPage.login(this.username, this.password);
             //System.out.println(this.expectResult);
+            //mainPage.logOut();
             assert(loginPage.checkValidLogin() == expectResult);
         }
     }
