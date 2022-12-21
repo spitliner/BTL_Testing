@@ -1,36 +1,32 @@
 package org.webTest.moodles.testScenario;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.ITest;
 import org.testng.ITestContext;
-import org.testng.annotations.*;
+import org.testng.annotations.Factory;
+import org.testng.annotations.Test;
+import org.webTest.moodles.pages.AddCategoryPage;
+import org.webTest.moodles.pages.DeleteCategoryPage;
 import org.webTest.moodles.pages.LoginPage;
 import org.webTest.moodles.pages.MainPage;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class TestLogin {
+public class TestDeleteCategory {
     @Factory
     public Object [] runTest() {
         List<Object> testList = new ArrayList<>();
-        testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
-        testList.add(new SingleTestLogin("test2", "teacher", "sandbox", Boolean.FALSE));
+        testList.add(new SingleDelete("test1", Boolean.TRUE));
         return testList.toArray();
     }
 }
 
-class SingleTestLogin extends TestAuxiliary {
+class SingleDelete extends TestAuxiliary {
     private String testCaseName;
-    private String username;
-    private String password;
     private Boolean expectResult;
 
-    public SingleTestLogin(String testCaseName, String username, String password, Boolean expectResult) {
+    public SingleDelete(String testCaseName, Boolean expectResult) {
         this.testCaseName = testCaseName;
-        this.username = username;
-        this.password = password;
         this.expectResult = expectResult;
     }
 
@@ -41,8 +37,12 @@ class SingleTestLogin extends TestAuxiliary {
             driver.get("https://sandbox.moodledemo.net/");
             MainPage mainPage = new MainPage(driver);
             LoginPage loginPage = mainPage.toLoginPage();
-            mainPage = loginPage.login(this.username, this.password);
-            System.out.println(this.expectResult);
+            mainPage = loginPage.login("admin", "sandbox");
+
+            driver.get("https://sandbox.moodledemo.net/course/management.php");
+            DeleteCategoryPage deleteCategoryPage = new DeleteCategoryPage(driver);
+            deleteCategoryPage.delete();
+
             mainPage.logOut();
             //assert(loginPage.checkValidLogin() == expectResult);
         }

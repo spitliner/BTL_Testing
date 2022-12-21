@@ -3,7 +3,8 @@
 <suite name="Suite">
     <test name="WebTest">
         <classes>
-            <class name="org.webTest.moodles.testScenario.TestLogin"/>
+<!--            <class name="org.webTest.moodles.testScenario.TestLogin"/>-->
+            <class name="org.webTest.moodles.testScenario.TestDeleteCategory"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
