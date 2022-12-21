@@ -2,6 +2,11 @@ package org.webTest.moodles.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
+import org.testng.annotations.Test;
+import org.webTest.moodles.testScenario.TestAuxiliary;
+
+import java.util.List;
 
 public class SiteAdministration extends Page {
     private static final String categoryXpath = "//div[@id='category-listing']//ul//a[contains(@class,'categoryname')]";
@@ -9,6 +14,4 @@ public class SiteAdministration extends Page {
         super(driver);
         PageFactory.initElements(this.driver, this);
     }
-
-
 }
