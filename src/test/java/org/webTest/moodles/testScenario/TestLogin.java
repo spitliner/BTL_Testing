@@ -16,7 +16,7 @@ public class TestLogin {
     public Object [] runTest() {
         List<Object> testList = new ArrayList<>();
         testList.add(new SingleTestLogin("test1", "admin", "sandbox", Boolean.TRUE));
-        testList.add(new SingleTestLogin("test2", "teacher", "sandbox", Boolean.TRUE);
+        testList.add(new SingleTestLogin("test2", "teacher", "sandbox", Boolean.TRUE));
         testList.add(new SingleTestLogin("test3", "teacher", "aaa", Boolean.FALSE));
         return testList.toArray();
     }
