@@ -16,6 +16,7 @@ public class Page {
     private static final String homeXpath = "//li[@data-key='home']//a";
     private static final String dashBroadXpath = "//li[@data-key='myhome']//a";
     private static final String courseXpath = "//li[@data-key='mycourse']//a";
+    private static final String siteAdminXpath = "//li[@data-key='siteadminnode']//a";
 
     private static final String moreXpath = "//li[@data-key='morebutton']//a";
     private static final String logInXPath = "//span[@class='login pl-2']//a";
@@ -37,6 +38,13 @@ public class Page {
     @FindBy(xpath = courseXpath)
     @CacheLookup
     private WebElement courseButton;
+
+    @FindBy(xpath = siteAdminXpath)
+    @CacheLookup
+    private WebElement siteAdminButton;
+
+    @FindBy(xpath = siteAdminXpath)
+    private List<WebElement> siteAdminList;
 
     @FindBy(xpath = logInXPath)
     @CacheLookup
@@ -70,6 +78,14 @@ public class Page {
     public DashBroadPage goDashBroad() {
         this.dashBroadButton.click();
         return new DashBroadPage(driver);
+    }
+
+    public SiteAdministration goSiteAdmin() {
+        if (0 != this.siteAdminList.size()) {
+            this.siteAdminButton.click();
+            return new SiteAdministration(this.driver);
+        }
+        return null;
     }
 
     public LoginPage toLoginPage() {

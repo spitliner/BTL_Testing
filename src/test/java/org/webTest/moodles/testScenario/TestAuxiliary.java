@@ -27,8 +27,8 @@ public class TestAuxiliary implements ITest {
         List<WebDriver> WebDriversList = new ArrayList<>();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         firefoxOptions.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-        WebDriversList.add(new FirefoxDriver(firefoxOptions));
-        WebDriversList.add(new EdgeDriver());
+        //WebDriversList.add(new FirefoxDriver(firefoxOptions));
+        //WebDriversList.add(new EdgeDriver());
         WebDriversList.add(new ChromeDriver());
         for (WebDriver driver: WebDriversList) {
             driver.manage().window().maximize();

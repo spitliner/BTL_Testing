@@ -41,10 +41,9 @@ class SingleTestLogin extends TestAuxiliary {
             driver.get("https://sandbox.moodledemo.net/");
             MainPage mainPage = new MainPage(driver);
             LoginPage loginPage = mainPage.toLoginPage();
-            mainPage = loginPage.login(this.username, this.password);
-            System.out.println(this.expectResult);
-            mainPage.logOut();
-            //assert(loginPage.checkValidLogin() == expectResult);
+            loginPage.login(this.username, this.password);
+            //System.out.println(this.expectResult);
+            assert(loginPage.checkValidLogin() == expectResult);
         }
     }
 }
